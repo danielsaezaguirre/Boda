@@ -343,70 +343,58 @@
 
   const music = byId("background-music");
   const musicButton = byId("music-toggle");
+  const musicLabel = byId("music-label");
+  const musicStatus = byId("music-status");
   const showMusicError = () => {
     musicButton.setAttribute("aria-pressed", "false");
-    byId("music-label").textContent = "Audio no disponible";
-    byId("music-status").textContent = `No se pudo reproducir ${config.musicFile}. Comprueba que el archivo exista y que sea un MP3 válido.`;
+    musicLabel.textContent = "Audio no disponible";
+    musicStatus.textContent = `No se pudo reproducir ${config.musicFile}. Comprueba que el archivo exista y que sea un MP3 válido.`;
   };
-  music.src = config.musicFile;
-  music.addEventListener("error", showMusicError);
-  let autoplayResumePending = false;
-  const resumeAutoplayOnInteraction = (event) => {
-    if (!autoplayResumePending) return;
-    if (event.target instanceof Element && event.target.closest("#music-toggle")) return;
-    autoplayResumePending = false;
-    document.removeEventListener("pointerdown", tryResumeAutoplay, true);
-    document.removeEventListener("touchstart", tryResumeAutoplay, true);
-    document.removeEventListener("keydown", tryResumeAutoplay, true);
-    music.play().catch(() => {});
-  };
-  const tryResumeAutoplay = (event) => resumeAutoplayOnInteraction(event);
-  music.addEventListener("play", () => {
-    musicButton.setAttribute("aria-pressed", "true");
-    byId("music-label").textContent = "Pausar música";
-    byId("music-status").textContent = "";
-  });
-  music.addEventListener("pause", () => {
-    musicButton.setAttribute("aria-pressed", "false");
-    byId("music-label").textContent = "Nuestra canción";
-  });
-  musicButton.addEventListener("click", async () => {
-    autoplayResumePending = false;
-    document.removeEventListener("pointerdown", tryResumeAutoplay, true);
-    document.removeEventListener("touchstart", tryResumeAutoplay, true);
-    document.removeEventListener("keydown", tryResumeAutoplay, true);
-    if (music.paused) {
-      try {
-        await music.play();
-        musicButton.setAttribute("aria-pressed", "true");
-        byId("music-label").textContent = "Pausar música";
-        byId("music-status").textContent = "";
-      } catch (error) {
-        showMusicError();
-        console.error("No se pudo reproducir la canción configurada.", error);
-      }
-    } else {
-      music.pause();
-      musicButton.setAttribute("aria-pressed", "false");
-      byId("music-label").textContent = "Nuestra canción";
-      byId("music-status").textContent = "";
-    }
-  });
-  music.addEventListener("ended", () => {
-    musicButton.setAttribute("aria-pressed", "false");
-    byId("music-label").textContent = "Nuestra canción";
-    byId("music-status").textContent = "";
-  });
-  music.play().catch((error) => {
+  const handleMusicPlaybackError = (error) => {
     if (error.name === "NotAllowedError") {
-      autoplayResumePending = true;
-      document.addEventListener("pointerdown", tryResumeAutoplay, { once: true, capture: true });
-      document.addEventListener("touchstart", tryResumeAutoplay, { once: true, capture: true, passive: true });
-      document.addEventListener("keydown", tryResumeAutoplay, { once: true, capture: true });
+      musicButton.setAttribute("aria-pressed", "false");
+      musicLabel.textContent = "Toca para escuchar";
+      musicStatus.textContent = "Tu navegador bloquea la reproducción automática. Pulsa el botón para escuchar la canción.";
       return;
     }
     showMusicError();
+    console.error("No se pudo reproducir la canción configurada.", error);
+  };
+  const startMusic = () => {
+    music.play().catch(handleMusicPlaybackError);
+  };
+  music.src = config.musicFile;
+  music.addEventListener("error", () => {
+    showMusicError();
+    console.error(`No se pudo cargar el archivo de audio: ${config.musicFile}.`, music.error);
   });
+  music.addEventListener("play", () => {
+    musicButton.setAttribute("aria-pressed", "true");
+    musicLabel.textContent = "Pausar música";
+    musicStatus.textContent = "";
+  });
+  music.addEventListener("pause", () => {
+    musicButton.setAttribute("aria-pressed", "false");
+    musicLabel.textContent = "Nuestra canción";
+  });
+  musicButton.addEventListener("click", () => {
+    if (music.paused) {
+      startMusic();
+    } else {
+      music.pause();
+    }
+  });
+  ["opening-open", "opening-skip"].forEach((id) => {
+    byId(id)?.addEventListener("click", () => {
+      if (music.paused) startMusic();
+    });
+  });
+  music.addEventListener("ended", () => {
+    musicButton.setAttribute("aria-pressed", "false");
+    musicLabel.textContent = "Nuestra canción";
+    musicStatus.textContent = "";
+  });
+  startMusic();
 
   if (config.galleryUrl) {
     const qr = byId("gallery-qr");

@@ -317,7 +317,7 @@ a { color: inherit; }
   .site-header nav { display: none; }
   .wordmark { font-size: 17px; }
   .hero { min-height: min(700px, 83svh); }
-  .hero-image { inset: -2% 0; }
+  .hero-image { inset: -2% 0; background-attachment: scroll; }
   .hero-botanical { width: clamp(122px, 34vw, 185px); opacity: .58; }
   .hero-botanical-top-left { top: -15px; left: -20px; }
   .hero-botanical-bottom-right { right: -22px; bottom: -18px; }
@@ -352,8 +352,7 @@ a { color: inherit; }
   .story-photo figcaption { padding: 42px 12px 13px; font-size: 16.8px; }
   .celebration-map { min-height: 0; }
   .timeline { margin-top: 38px; padding: 0; }
-  .timeline-section.is-open .timeline-curtain-left { transform: translateX(calc(-100% + 18px)); }
-  .timeline-section.is-open .timeline-curtain-right { transform: translateX(calc(100% - 18px)); }
+  .timeline-curtains { display: none; }
   .timeline::before { top: 22px; bottom: 22px; left: 20px; }
   .timeline-item { grid-template-columns: 40px minmax(0, 1fr); column-gap: 12px; min-height: 178px; padding: 23px 0; }
   .timeline-dot { width: 13px; height: 13px; border-color: var(--ink); }
