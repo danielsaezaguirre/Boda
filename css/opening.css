@@ -49,14 +49,13 @@ body.opening-locked { overflow: hidden; }
   82% { transform: translateY(-72%) scale(1.02); }
   100% { transform: translateY(-74%) scale(1); }
 }
-.opening-actions { display: grid; width: min(100%, 390px); justify-items: stretch; gap: 10px; }
+.opening-actions { display: grid; justify-items: center; gap: 12px; }
 .opening-button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 22px; border: 1px solid #d6c49a; border-radius: 2px; padding: 12px 23px; background: #d5c49a; color: #20352b; cursor: pointer; font: 600 10px/1 "DM Sans", Arial, sans-serif; letter-spacing: .12em; text-transform: uppercase; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
 .opening-button:hover { transform: translateY(-2px); background: #e2d2aa; box-shadow: 0 8px 22px #101a1440; }
-.opening-button-secondary { border-color: #d8d9cd80; background: transparent; color: #f7f4eb; }
-.opening-button-secondary:hover { background: #f7f4eb14; }
-.opening-button:focus-visible { outline: 3px solid #f5e6bf; outline-offset: 4px; }
+.opening-button:focus-visible, .opening-skip:focus-visible { outline: 3px solid #f5e6bf; outline-offset: 4px; }
 .opening-button:disabled { cursor: wait; opacity: .78; }
-.opening-music-status { min-height: 1.5em; margin: 10px 0 0; color: #e4e2d8; font: 12px/1.5 "DM Sans", Arial, sans-serif; }
+.opening-skip { border: 0; padding: 5px 8px; background: transparent; color: #d8d9cd; cursor: pointer; font: 500 10px "DM Sans", Arial, sans-serif; text-decoration: underline; text-decoration-color: #d8d9cd80; text-underline-offset: 4px; }
+.opening-skip:hover { color: #fff; }
 
 @media (max-width: 520px) {
   .invitation-opening { padding: 25px 20px; }
