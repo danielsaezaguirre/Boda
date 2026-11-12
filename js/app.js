@@ -389,7 +389,6 @@
     musicLabel.textContent = "Nuestra canción";
     musicStatus.textContent = "";
   });
-  startMusic();
 
   if (config.galleryUrl) {
     const qr = byId("gallery-qr");

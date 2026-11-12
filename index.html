@@ -19,8 +19,8 @@
     <section class="invitation-opening" id="invitation-opening" role="dialog" aria-modal="true" aria-labelledby="opening-title" aria-describedby="opening-description">
       <div class="opening-content">
         <p class="opening-eyebrow">Una invitación para ti</p>
-        <h1 id="opening-title">Tenemos algo que celebrar</h1>
-        <p class="opening-description" id="opening-description">Abre este sobre y descubre nuestra invitación.</p>
+        <h1 id="opening-title">¿Cómo quieres abrir la invitación?</h1>
+        <p class="opening-description" id="opening-description">Elige si quieres escuchar nuestra canción al abrir el sobre.</p>
 
         <div class="opening-envelope" id="opening-envelope" aria-hidden="true">
           <div class="envelope-back"></div>
@@ -34,9 +34,10 @@
         </div>
 
         <div class="opening-actions">
-          <button class="opening-button" id="opening-open" type="button">Abrir invitación <span aria-hidden="true">↗</span></button>
-          <button class="opening-skip" id="opening-skip" type="button">Saltar animación</button> <!---Esto es para el desarrollador QUITAR CUANDO ACABE LA APLICAICON-->
+          <button class="opening-button" id="opening-with-music" type="button">Abrir con música <span aria-hidden="true">♫</span></button>
+          <button class="opening-button opening-button-secondary" id="opening-without-music" type="button">Abrir sin música <span aria-hidden="true">↗</span></button>
         </div>
+        <p class="opening-music-status" id="opening-music-status" aria-live="polite"></p>
       </div>
     </section>
     <main id="invitation">
@@ -292,7 +293,7 @@
       </footer>
     </main>
 
-    <audio id="background-music" preload="auto" autoplay loop playsinline></audio>
+    <audio id="background-music" preload="auto" loop playsinline></audio>
     <div class="rosemary-layer" id="rosemary-layer" aria-hidden="true"></div>
   </body>
 </html>

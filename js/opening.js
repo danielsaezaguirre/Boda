@@ -4,13 +4,14 @@
   const opening = document.getElementById("invitation-opening");
   const invitation = document.getElementById("invitation");
   const envelope = document.getElementById("opening-envelope");
-  const openButton = document.getElementById("opening-open");
-  const skipButton = document.getElementById("opening-skip");
+  const withMusicButton = document.getElementById("opening-with-music");
+  const withoutMusicButton = document.getElementById("opening-without-music");
+  const musicStatus = document.getElementById("opening-music-status");
   const music = document.getElementById("background-music");
-  const storageKey = "wedding-invitation-opened-v1";
+  const storageKey = "wedding-invitation-opened-v2";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  if (!opening || !invitation || !envelope || !openButton || !skipButton) return;
+  if (!opening || !invitation || !envelope || !withMusicButton || !withoutMusicButton) return;
 
   let alreadyOpened = false;
   try {
@@ -26,17 +27,9 @@
   invitation.inert = true;
   invitation.setAttribute("aria-hidden", "true");
   document.body.classList.add("opening-locked");
-  openButton.focus({ preventScroll: true });
+  withMusicButton.focus({ preventScroll: true });
 
   let state = "closed";
-  const startMusicFromGesture = () => {
-    if (!music) return;
-    music.play().catch((error) => {
-      if (error.name !== "NotAllowedError") {
-        console.error("No se pudo reproducir la canción configurada.", error);
-      }
-    });
-  };
   const rememberVisit = () => {
     try {
       window.sessionStorage.setItem(storageKey, "yes");
@@ -64,20 +57,29 @@
     window.setTimeout(restoreInvitation, 720);
   };
 
-  const startOpening = () => {
+  const startOpening = (withMusic) => {
     if (state !== "closed") return;
+    if (withMusic && music) {
+      music.play().catch((error) => {
+        if (error.name === "NotAllowedError") {
+          if (musicStatus) {
+            musicStatus.textContent = "El navegador no ha permitido reproducir la música. Puedes activarla con el botón de música al entrar.";
+          }
+          return;
+        }
+        console.error("No se pudo reproducir la canción configurada.", error);
+      });
+    } else if (music) {
+      music.pause();
+    }
     rememberVisit();
     state = "opening";
-    openButton.disabled = true;
-    openButton.setAttribute("aria-label", "Abriendo invitación");
     envelope.classList.add("is-opening");
     window.setTimeout(closeOpening, reduceMotion ? 180 : 2380);
   };
 
-  openButton.addEventListener("click", startMusicFromGesture);
-  openButton.addEventListener("click", startOpening);
-  skipButton.addEventListener("click", startMusicFromGesture);
-  skipButton.addEventListener("click", closeOpening);
+  withMusicButton.addEventListener("click", () => startOpening(true));
+  withoutMusicButton.addEventListener("click", () => startOpening(false));
 
   opening.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
