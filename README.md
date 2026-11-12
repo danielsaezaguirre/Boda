@@ -13,7 +13,7 @@ Edita `js/config.js` y completa:
 
 El contenido de la sección «El menú» se puede personalizar directamente en `index.html`, buscando `id="menu"` y editando los platos y sus descripciones.
 
-Coloca la canción en `audio/musica.mp3`. Si quieres una foto de portada, guárdala en `image/portada.jpg` y pon `"coverImage": "image/portada.jpg"` en la configuración. La página intenta reproducir la música automáticamente al abrirse. Si el navegador bloquea la reproducción automática, empezará al primer toque o tecla; también se puede controlar con el botón de música.
+Coloca la canción en `audio/musica.mp3`. Si quieres una foto de portada, guárdala en `image/portada.jpg` y pon `"coverImage": "image/portada.jpg"` en la configuración. La página intenta reproducir la música automáticamente al abrirse y al pulsar «Abrir invitación» o «Saltar animación». Algunos navegadores móviles bloquean el audio automático; en ese caso, la primera pulsación inicia la canción. También se puede controlar con el botón de música.
 
 El código QR de `image/fotos-qr.png` abre la dirección configurada en `galleryUrl`. La tarjeta enmarcada de la sección de fotos también es un enlace: se puede pulsar para abrir la carpeta, sin escanear el QR. Si cambias la dirección de la galería, genera un nuevo QR y reemplaza esa imagen; `galleryQrImage` indica su ruta. La imagen actual se generó con el servicio externo `api.qrserver.com`.
 

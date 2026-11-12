@@ -384,11 +384,6 @@
       music.pause();
     }
   });
-  ["opening-open", "opening-skip"].forEach((id) => {
-    byId(id)?.addEventListener("click", () => {
-      if (music.paused) startMusic();
-    });
-  });
   music.addEventListener("ended", () => {
     musicButton.setAttribute("aria-pressed", "false");
     musicLabel.textContent = "Nuestra canción";

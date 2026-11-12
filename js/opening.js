@@ -6,6 +6,7 @@
   const envelope = document.getElementById("opening-envelope");
   const openButton = document.getElementById("opening-open");
   const skipButton = document.getElementById("opening-skip");
+  const music = document.getElementById("background-music");
   const storageKey = "wedding-invitation-opened-v1";
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -28,6 +29,14 @@
   openButton.focus({ preventScroll: true });
 
   let state = "closed";
+  const startMusicFromGesture = () => {
+    if (!music) return;
+    music.play().catch((error) => {
+      if (error.name !== "NotAllowedError") {
+        console.error("No se pudo reproducir la canción configurada.", error);
+      }
+    });
+  };
   const rememberVisit = () => {
     try {
       window.sessionStorage.setItem(storageKey, "yes");
@@ -65,7 +74,9 @@
     window.setTimeout(closeOpening, reduceMotion ? 180 : 2380);
   };
 
+  openButton.addEventListener("click", startMusicFromGesture);
   openButton.addEventListener("click", startOpening);
+  skipButton.addEventListener("click", startMusicFromGesture);
   skipButton.addEventListener("click", closeOpening);
 
   opening.addEventListener("keydown", (event) => {
