@@ -1,0 +1,78 @@
+body.opening-locked { overflow: hidden; }
+
+.invitation-opening {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  display: grid;
+  min-height: 100vh;
+  min-height: 100dvh;
+  place-items: center;
+  overflow: auto;
+  padding: 30px 22px;
+  background: radial-gradient(ellipse at 50% 34%, #405244 0, #293c31 45%, #1d2d23 100%);
+  color: #f7f4eb;
+  opacity: 1;
+  transition: opacity .68s ease, visibility .68s ease;
+}
+.invitation-opening::before, .invitation-opening::after {
+  position: absolute;
+  inset: 15px;
+  border: 1px solid #d6c49a22;
+  content: "";
+  pointer-events: none;
+}
+.invitation-opening::after { inset: 21px; border-color: #d6c49a12; }
+.invitation-opening.is-closing { visibility: hidden; opacity: 0; pointer-events: none; }
+.opening-content { position: relative; z-index: 1; display: grid; width: min(100%, 650px); justify-items: center; text-align: center; }
+.opening-eyebrow { margin: 0 0 9px; color: #d5c49a; font: 600 10px/1.6 "DM Sans", Arial, sans-serif; letter-spacing: .22em; text-transform: uppercase; }
+.opening-content h1 { margin: 0; color: #f7f4eb; font: 400 clamp(38px, 6vw, 62px)/1.02 "Cormorant Garamond", Georgia, serif; }
+.opening-description { margin: 10px 0 0; color: #e4e2d8; font: italic 17px/1.5 "Cormorant Garamond", Georgia, serif; }
+.opening-envelope { position: relative; width: min(390px, 78vw); aspect-ratio: 1.58; margin: 32px auto 23px; perspective: 1200px; }
+.envelope-back { position: absolute; inset: 0; border: 1px solid #d5c49a; border-radius: 5px; background: linear-gradient(145deg, #f6f1e4, #e7dfcc); box-shadow: 0 28px 60px #101a1470; }
+.envelope-card { position: absolute; z-index: 2; right: 9%; bottom: 7%; left: 9%; display: grid; height: 86%; align-content: center; justify-items: center; gap: 8px; border: 1px solid #d8cba9; background: #fbf8f0; color: #263a2d; box-shadow: 0 5px 20px #20352b1c; font: italic 21px "Cormorant Garamond", Georgia, serif; transform: translateY(0) scale(.94); }
+.envelope-card::before, .envelope-card::after { width: 34px; height: 1px; background: #ad9259; content: ""; }
+.envelope-card-flower { color: #ad9259; font: 24px/1 "DM Sans", Arial, sans-serif; }
+.envelope-pocket { position: absolute; z-index: 3; inset: 0; border: 1px solid #d5c49a; background: linear-gradient(145deg, #eee7d6, #e4dac4); clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%); }
+.envelope-pocket::after { position: absolute; inset: 0; background: linear-gradient(35deg, transparent 49.7%, #c9bb9b 50%, transparent 50.4%), linear-gradient(-35deg, transparent 49.7%, #d1c4a7 50%, transparent 50.4%); content: ""; }
+.envelope-flap { position: absolute; z-index: 5; top: 0; left: 0; width: 100%; height: 59%; border: 1px solid #d5c49a; background: linear-gradient(165deg, #f7f1e2, #e8dec9); clip-path: polygon(0 0, 100% 0, 50% 100%); transform: rotateX(0); transform-origin: 50% 0; backface-visibility: hidden; transform-style: preserve-3d; }
+.envelope-seal { position: absolute; z-index: 6; top: 39%; left: 50%; display: grid; width: 48px; aspect-ratio: 1; place-items: center; border: 1px solid #d4bd83; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #cfb878, #a8894f 72%); color: #fff8e7; box-shadow: 0 3px 9px #263a2d38, inset 0 1px 2px #f4e4b180; font-size: 19px; transform: translate(-50%, -50%); }
+.envelope-seal::before { position: absolute; inset: 4px; border: 1px solid #f2e4bf8c; border-radius: 50%; content: ""; }
+.opening-envelope.is-opening .envelope-flap { z-index: 1; animation: envelope-flap-open .82s .28s cubic-bezier(.2,.7,.2,1) forwards; }
+.opening-envelope.is-opening .envelope-seal { animation: envelope-seal-lift .42s .12s ease-in forwards; }
+.opening-envelope.is-opening .envelope-card { z-index: 4; animation: envelope-card-rise 1.55s .62s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes envelope-flap-open { to { transform: rotateX(180deg); } }
+@keyframes envelope-seal-lift { to { opacity: 0; transform: translate(-50%, -110%) scale(.5) rotate(-18deg); } }
+@keyframes envelope-card-rise {
+  0% { transform: translateY(0) scale(.94); }
+  65% { transform: translateY(-84%) scale(1.055); }
+  82% { transform: translateY(-72%) scale(1.02); }
+  100% { transform: translateY(-74%) scale(1); }
+}
+.opening-actions { display: grid; justify-items: center; gap: 12px; }
+.opening-button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 22px; border: 1px solid #d6c49a; border-radius: 2px; padding: 12px 23px; background: #d5c49a; color: #20352b; cursor: pointer; font: 600 10px/1 "DM Sans", Arial, sans-serif; letter-spacing: .12em; text-transform: uppercase; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+.opening-button:hover { transform: translateY(-2px); background: #e2d2aa; box-shadow: 0 8px 22px #101a1440; }
+.opening-button:focus-visible, .opening-skip:focus-visible { outline: 3px solid #f5e6bf; outline-offset: 4px; }
+.opening-button:disabled { cursor: wait; opacity: .78; }
+.opening-skip { border: 0; padding: 5px 8px; background: transparent; color: #d8d9cd; cursor: pointer; font: 500 10px "DM Sans", Arial, sans-serif; text-decoration: underline; text-decoration-color: #d8d9cd80; text-underline-offset: 4px; }
+.opening-skip:hover { color: #fff; }
+
+@media (max-width: 520px) {
+  .invitation-opening { padding: 25px 20px; }
+  .opening-content h1 { max-width: 360px; font-size: clamp(37px, 10vw, 49px); }
+  .opening-description { max-width: 300px; font-size: 16px; }
+  .opening-envelope { width: min(340px, 82vw); margin: 29px auto 20px; }
+  .envelope-seal { width: 41px; }
+}
+
+@media (max-height: 650px) and (min-width: 521px) {
+  .invitation-opening { padding-block: 16px; }
+  .opening-envelope { width: min(330px, 47vh); margin: 15px auto 10px; }
+  .opening-content h1 { font-size: 48px; }
+  .opening-description { margin-top: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invitation-opening, .opening-button { transition-duration: .01ms; }
+  .opening-envelope.is-opening .envelope-flap, .opening-envelope.is-opening .envelope-seal, .opening-envelope.is-opening .envelope-card { animation-duration: .01ms; animation-delay: 0ms; }
+}

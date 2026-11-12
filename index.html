@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f6f0">
+    <meta name="description" content="Una invitación muy especial. Nos encantará compartir este día contigo.">
+    <title>Una invitación especial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/opening.css">
+    <script src="js/opening.js" defer></script>
+    <script src="js/config.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <section class="invitation-opening" id="invitation-opening" role="dialog" aria-modal="true" aria-labelledby="opening-title" aria-describedby="opening-description">
+      <div class="opening-content">
+        <p class="opening-eyebrow">Una invitación para ti</p>
+        <h1 id="opening-title">Tenemos algo que celebrar</h1>
+        <p class="opening-description" id="opening-description">Abre este sobre y descubre nuestra invitación.</p>
+
+        <div class="opening-envelope" id="opening-envelope" aria-hidden="true">
+          <div class="envelope-back"></div>
+          <div class="envelope-card">
+            <span class="envelope-card-flower">✳</span>
+            <span>Bienvenid@s</span>
+          </div>
+          <div class="envelope-pocket"></div>
+          <div class="envelope-flap"></div>
+          <div class="envelope-seal"><span>✳</span></div>
+        </div>
+
+        <div class="opening-actions">
+          <button class="opening-button" id="opening-open" type="button">Abrir invitación <span aria-hidden="true">↗</span></button>
+          <button class="opening-skip" id="opening-skip" type="button">Saltar animación</button> <!---Esto es para el desarrollador QUITAR CUANDO ACABE LA APLICAICON-->
+        </div>
+      </div>
+    </section>
+    <main id="invitation">
+      <header class="site-header">
+        <a class="wordmark" href="#inicio" aria-label="Ir al inicio"><span data-couple-short>Vivi &amp; Angel</span><span class="wordmark-date" data-date-short>00 · 00 · 0000</span></a>
+        <nav aria-label="Navegación principal">
+          <a href="#celebracion">La celebración</a>
+          <a href="#programa">Programa</a>
+          <a href="#menu">Menú</a>
+          <a href="#confirmacion">Confirmación</a>
+          <a href="admin.html">Solo administradores</a>
+        </nav>
+        <button class="music-button" id="music-toggle" type="button" aria-pressed="false">
+          <span class="music-icon" aria-hidden="true">♫</span><span id="music-label">Nuestra canción</span><span class="visually-hidden" id="music-status" aria-live="polite"></span>
+        </button>
+      </header>
+
+      <section class="hero" id="inicio">
+        <div class="hero-image" role="img" aria-label="Fotografía de la pareja para su invitación de boda"></div>
+        <img class="hero-botanical hero-botanical-top-left" data-parallax="0.14" src="assets/rosemary-line.svg" alt="" aria-hidden="true">
+        <img class="hero-botanical hero-botanical-bottom-right" data-parallax="0.14" src="assets/rosemary-line.svg" alt="" aria-hidden="true">
+        <div class="hero-content" data-parallax="0.14">
+          <span class="eyebrow">Con mucha ilusión, queremos invitarte a</span>
+          <h1><span data-couple-first>Nombre</span><i>&amp;</i><span data-couple-second>Nombre</span></h1>
+          <p class="hero-date" data-date-long>Una fecha para recordar</p>
+          <span class="hero-rule" aria-hidden="true"></span>
+          <p class="hero-note">¡Nos casamos! Y no imaginamos un día más bonito que celebrarlo contigo.</p>
+          <a class="text-link" href="#celebracion">Descubre todos los detalles <span aria-hidden="true">↓</span></a>
+        </div>
+        <span class="hero-side-note" data-parallax="0.14">UN DÍA · TODA UNA VIDA</span>
+      </section>
+
+      <section class="countdown-section section-pad" aria-labelledby="countdown-title">
+        <svg class="countdown-divider" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+          <path class="countdown-divider-fill" d="M0 0H1440V88C1260 73 1160 82 1000 91s-310 14-486-1-310-19-514 0Z"/>
+          <path class="countdown-divider-line" d="M0 89c204-19 338-15 514 0s310 10 486 1 260-18 440-2"/>
+        </svg>
+        <div class="countdown-medallion">
+          <div class="countdown-circle">
+            <video id="countdown-video" class="countdown-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+              <source src="assets/cuenta-atras.mp4" type="video/mp4">
+            </video>
+            <div class="countdown-content">
+              <p class="eyebrow">Faltan</p>
+              <h2 id="countdown-title" class="visually-hidden">La cuenta atrás ha comenzado</h2>
+              <div class="countdown" aria-label="Cuenta atrás para la boda">
+                <div><strong id="count-days">000</strong><span>días</span></div>
+                <span class="count-separator">·</span>
+                <div><strong id="count-hours">00</strong><span>hs</span></div>
+                <span class="count-separator">·</span>
+                <div><strong id="count-minutes">00</strong><span>min</span></div>
+                <span class="count-separator">·</span>
+                <div><strong id="count-seconds">00</strong><span>seg</span></div>
+              </div>
+              <span class="countdown-flourish" aria-hidden="true">♡</span>
+            </div>
+          </div>
+        </div>
+        <p class="countdown-caption" id="countdown-caption">Contamos los días para brindar juntos</p>
+      </section>
+
+      <section class="quote-section section-pad" aria-labelledby="quote-title">
+        <div class="quote-card reveal">
+          <span class="quote-ornament" aria-hidden="true">✳</span>
+          <p class="eyebrow">Una historia que nos trajo hasta aquí</p>
+          <h2 id="quote-title" class="visually-hidden">Una frase para nuestro gran día</h2>
+          <blockquote>Hay momentos en la vida que se quedan grabados en el alma, y el día en que nos conocimos fue el principio de todo. Ahora, después de tantos caminos recorridos de la mano, nos emociona invitaros a compartir el día más feliz de nuestras vidas.</blockquote>
+          <span class="quote-rule" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <section class="celebration section-pad" id="celebracion">
+        <img class="celebration-rosemary celebration-rosemary-one" src="assets/rosemary-line.svg" alt="" aria-hidden="true">
+        <img class="celebration-rosemary celebration-rosemary-two" src="assets/rosemary-line.svg" alt="" aria-hidden="true">
+        <img class="celebration-rosemary celebration-rosemary-three" src="assets/rosemary-line.svg" alt="" aria-hidden="true">
+        <img class="celebration-rosemary celebration-rosemary-four" src="assets/rosemary-line.svg" alt="" aria-hidden="true">
+        <img class="celebration-rosemary celebration-rosemary-five" src="assets/rosemary-line.svg" alt="" aria-hidden="true">
+        <img class="celebration-rosemary celebration-rosemary-six" src="assets/rosemary-line.svg" alt="" aria-hidden="true">
+        <img class="celebration-rosemary celebration-rosemary-seven" src="assets/rosemary-line.svg" alt="" aria-hidden="true">
+        <img class="celebration-rosemary celebration-rosemary-eight" src="assets/rosemary-line.svg" alt="" aria-hidden="true">
+        <div class="celebration-copy">
+          <p class="eyebrow">El comienzo de algo precioso</p>
+          <h2>Un día para<br><em>recordar siempre</em></h2>
+          <p>Después de tantos momentos compartidos, ha llegado el momento de celebrar nuestro sí. Nos haría muchísima ilusión que nos acompañaras en este día tan importante.</p>
+          <div class="detail-list">
+            <div><span class="detail-icon" aria-hidden="true">✳</span><p><strong>Cuándo</strong><span data-date-long>Próximamente</span></p></div>
+            <div><span class="detail-icon" aria-hidden="true">⌖</span><p><strong>Dónde</strong><span data-venue>Nombre del lugar</span><span data-address>Dirección pendiente</span></p></div>
+          </div>
+          <a class="button button-outline" id="map-link" href="#celebracion" target="_blank" rel="noreferrer">Cómo llegar <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="celebration-map" data-parallax="0.08">
+          <iframe
+            id="venue-map"
+            title="Mapa interactivo de la ubicación de la celebración"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="story-section section-pad" aria-labelledby="story-title">
+        <img class="story-flower" src="assets/story-corner-bouquet.avif" alt="" aria-hidden="true" fetchpriority="high">
+        <img class="story-flower story-flower-opposite" src="assets/story-corner-bouquet-opposite.png" alt="" aria-hidden="true" loading="lazy">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Nuestra historia</p>
+          <h2 id="story-title">Un poquito de nosotros</h2>
+          <p>Algunos instantes que nos han traído hasta aquí.</p>
+        </div>
+        <div class="story-album">
+          <div class="story-gallery" id="story-gallery" tabindex="0" aria-label="Álbum de fotos. Desliza horizontalmente para ver los recuerdos">
+          <figure class="story-photo story-photo-tall">
+            <img src="assets/Nosotros1.jpeg" alt="La pareja compartiendo una mirada en el jardín" loading="lazy">
+            <figcaption>Donde empezó todo</figcaption>
+          </figure>
+          <figure class="story-photo story-photo-wide">
+            <img src="assets/Nosotros2.jpeg" alt="La pareja abrazada durante una salida juntos" loading="lazy">
+            <figcaption>Pequeños momentos, grandes recuerdos</figcaption>
+          </figure>
+          <figure class="story-photo story-photo-wide">
+            <img src="assets/Nosotros2.jpeg" alt="La pareja abrazada durante una salida juntos" loading="lazy">
+            <figcaption>Pequeños momentos, grandes recuerdos</figcaption>
+          </figure>
+          <figure class="story-photo story-photo-wide">
+            <img src="assets/Nosotros2.jpeg" alt="La pareja disfrutando de otro recuerdo juntos" loading="lazy">
+            <figcaption>Un recuerdo para guardar</figcaption>
+          </figure>
+          </div>
+          <div class="story-controls" aria-label="Controles del álbum">
+            <button type="button" class="story-arrow" id="story-prev" aria-label="Foto anterior">←</button>
+            <span class="story-counter" id="story-counter" aria-live="polite">01 / 04</span>
+            <button type="button" class="story-arrow" id="story-next" aria-label="Foto siguiente">→</button>
+          </div>
+        </div>
+        <p class="story-hint">Puedes añadir más recuerdos cuando quieras: coloca las fotos en la carpeta <code>assets</code>.</p>
+      </section>
+
+      <section class="timeline-section section-pad" id="programa">
+        <div class="timeline-curtains" aria-hidden="true">
+          <div class="timeline-curtain timeline-curtain-left">
+            <span class="curtain-tie"><span class="curtain-bow"></span></span>
+          </div>
+          <div class="timeline-curtain timeline-curtain-right">
+            <span class="curtain-tie"><span class="curtain-bow"></span></span>
+          </div>
+        </div>
+        <div class="section-heading">
+          <p class="eyebrow">Guarda el día</p>
+          <h2>El itinerario</h2>
+          <p>Estos son los horarios aproximados para disfrutar cada momento juntos.</p>
+        </div>
+        <div class="timeline" id="timeline" role="list" aria-label="Itinerario aproximado de la boda"></div>
+        <p class="timeline-note">Horarios aproximados. ¡Guarda energía para la fiesta!</p>
+      </section>
+
+      <section class="menu-section section-pad" id="menu" aria-labelledby="menu-title">
+        <div class="section-heading">
+          <p class="eyebrow">Una mesa para disfrutar</p>
+          <h2 id="menu-title">El menú</h2>
+          <p>Una propuesta para ir abriendo el apetito. ¡La puedes editar a tu gusto!</p>
+        </div>
+        <div class="menu-grid">
+          <article class="menu-item">
+            <span class="menu-number" aria-hidden="true">01</span>
+            <p class="eyebrow">Para empezar</p>
+            <h3>Un cóctel de bienvenida</h3>
+            <p>Croquetas caseras de jamón, tartaletas de tomate y albahaca, y pequeños bocados de temporada.</p>
+          </article>
+          <article class="menu-item">
+            <span class="menu-number" aria-hidden="true">02</span>
+            <p class="eyebrow">Primer plato</p>
+            <h3>Fresquito y de temporada</h3>
+            <p>Ensalada de burrata con tomate, hojas tiernas, albahaca fresca y un toque de aceite de oliva.</p>
+          </article>
+          <article class="menu-item">
+            <span class="menu-number" aria-hidden="true">03</span>
+            <p class="eyebrow">Plato principal</p>
+            <h3>Un clásico para celebrar</h3>
+            <p>Solomillo al horno con patatas panaderas y verduras. También habrá una opción vegetariana.</p>
+          </article>
+          <article class="menu-item">
+            <span class="menu-number" aria-hidden="true">04</span>
+            <p class="eyebrow">Algo dulce</p>
+            <h3>El broche perfecto</h3>
+            <p>Tarta nupcial, café y un brindis con cava para terminar la cena con una sonrisa.</p>
+          </article>
+        </div>
+        <p class="menu-note">Si tienes alguna alergia o necesitas una opción especial, cuéntanoslo al confirmar tu asistencia.</p>
+      </section>
+
+      <section class="rsvp-section section-pad" id="confirmacion">
+        <div class="rsvp-intro">
+          <p class="eyebrow">Tu presencia es nuestro mejor regalo</p>
+          <h2>¿Nos acompañas?</h2>
+          <p>Confírmanos si podrás venir antes de la fecha límite. Estamos deseando celebrar contigo.</p>
+          <p class="children-note">Esta vez, los peques se quedan con alguien que los quiera mucho, porque sus papás tienen una misión: ¡celebrar con nosotros!</p>
+          <div class="rsvp-deadline">Confirma antes del <strong data-rsvp-deadline>fecha pendiente</strong></div>
+        </div>
+        <form class="rsvp-form" id="rsvp-form">
+          <label for="guest-name">Tu nombre y apellidos</label>
+          <input id="guest-name" name="guestName" type="text" placeholder="Escribe tu nombre" autocomplete="name" required>
+          <label for="guest-email">Tu correo electrónico</label>
+          <input id="guest-email" name="guestEmail" type="email" placeholder="nombre@ejemplo.com" autocomplete="email" required>
+          <fieldset>
+            <legend>¿Podrás acompañarnos?</legend>
+            <label class="radio-option"><input type="radio" name="attendance" value="Sí, allí estaré" required><span>Sí, allí estaré</span></label>
+          </fieldset>
+          <span class="companions-label" id="guest-companions-label">¿Cuántas personas te acompañarán? <span class="optional">(sin contarte a ti)</span></span>
+          <div class="companion-select" id="companion-select">
+            <input id="guest-companions" name="companions" type="hidden" value="1">
+            <button class="companion-select-trigger" id="companion-trigger" type="button" aria-labelledby="guest-companions-label companion-value" aria-haspopup="listbox" aria-expanded="false">
+              <span id="companion-value">1 persona</span><span class="companion-chevron" aria-hidden="true">⌄</span>
+            </button>
+            <div class="companion-options" id="companion-options" role="listbox" aria-labelledby="guest-companions-label" hidden>
+              <button type="button" role="option" aria-selected="true" data-value="1">1 persona</button>
+              <button type="button" role="option" aria-selected="false" data-value="2">2 personas</button>
+              <button type="button" role="option" aria-selected="false" data-value="3">3 personas</button>
+              <button type="button" role="option" aria-selected="false" data-value="4">4 personas</button>
+            </div>
+          </div>
+          <label for="guest-notes">Alergias, intolerancias o algún mensaje <span class="optional">(opcional)</span></label>
+          <textarea id="guest-notes" name="notes" rows="3" placeholder="Cuéntanos lo que necesitemos saber"></textarea>
+          <button class="button button-dark" type="submit">Enviar confirmación <span aria-hidden="true">↗</span></button>
+          <p class="form-message" id="rsvp-message" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="photos-section section-pad" id="fotos">
+        <div class="photos-copy">
+          <p class="eyebrow">Los recuerdos los hacemos entre todos</p>
+          <h2>Comparte tus<br><em>fotografías</em></h2>
+          <p>Cuando llegue el gran día, escanea el código para ver y compartir las fotos de la celebración. ¡Queremos ver el día también a través de tus ojos!</p>
+          <span class="coming-soon" id="gallery-status">La galería estará disponible después de la boda</span>
+        </div>
+        <a class="qr-card" id="gallery-link" target="_blank" rel="noreferrer" aria-label="Abrir la carpeta de fotos de la boda">
+          <span class="qr-card-label">UNA CARPETA DE RECUERDOS</span>
+          <span class="qr-frame" id="qr-container">
+            <div class="qr-placeholder" id="qr-placeholder" aria-label="Código QR pendiente de configurar">
+              <span>✳</span><span>FOTOS</span><span>✳</span>
+            </div>
+            <img id="gallery-qr" alt="Código QR para abrir la carpeta de fotos de la boda" hidden>
+          </span>
+          <span class="qr-card-action">Pulsa aquí para abrir la galería <span aria-hidden="true">↗</span></span>
+          <span class="qr-card-hint">o escanea el código con tu cámara</span>
+        </a>
+      </section>
+
+      <footer class="site-footer">
+        <span class="footer-flower" aria-hidden="true">✳</span>
+        <p>El amor se celebra mejor en compañía.</p>
+        <strong><span data-couple-short>Vivi &amp; Angel</span></strong>
+        <span class="footer-date" data-date-short>00 · 00 · 0000</span>
+      </footer>
+    </main>
+
+    <audio id="background-music" preload="auto" autoplay loop></audio>
+    <div class="rosemary-layer" id="rosemary-layer" aria-hidden="true"></div>
+  </body>
+</html>

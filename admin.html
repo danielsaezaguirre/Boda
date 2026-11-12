@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f6f0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Lista privada de invitados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/config.js" defer></script>
+    <script src="js/admin.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="index.html">Lista de invitados<span class="wordmark-date">Administración privada</span></a>
+      <a class="button button-outline" href="index.html">Volver a la invitación</a>
+    </header>
+    <main class="admin-page">
+      <section class="admin-section section-pad">
+        <div class="section-heading">
+          <p class="eyebrow">Solo para la pareja</p>
+          <h1>Lista de invitados</h1>
+          <p>Inicia sesión con la cuenta de administración para consultar las confirmaciones.</p>
+        </div>
+        <form class="admin-login" id="admin-login-form">
+          <label for="admin-email">Correo de administración</label>
+          <input id="admin-email" name="email" type="email" autocomplete="username" required>
+          <label for="admin-password">Contraseña</label>
+          <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+          <button class="button button-dark" type="submit">Entrar a la lista <span aria-hidden="true">↗</span></button>
+          <p class="form-message" id="admin-message" role="status"></p>
+        </form>
+        <div class="guest-list" id="guest-list" hidden>
+          <div class="guest-list-toolbar">
+            <p class="guest-totals" id="guest-totals" aria-live="polite"></p>
+            <div>
+              <button class="button button-outline" id="refresh-guests" type="button">Actualizar</button>
+              <button class="button button-outline" id="admin-logout" type="button">Cerrar sesión</button>
+            </div>
+          </div>
+          <div class="guest-table-wrap">
+            <table>
+              <thead><tr><th>Invitado</th><th>Asistencia</th><th>Acompañantes</th><th>Correo</th><th>Notas</th><th>Recibida</th></tr></thead>
+              <tbody id="guest-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <span class="footer-flower" aria-hidden="true">✳</span>
+      <p>El amor se celebra mejor en compañía.</p>
+      <a class="admin-link" href="index.html">Volver a la invitación</a>
+    </footer>
+  </body>
+</html>
