@@ -284,6 +284,8 @@ a { color: inherit; }
   .timeline-item h3 { font-size: 23px; }
   .timeline-item p { font-size: 16.8px; }
   .rsvp-intro > p:not(.eyebrow) { max-width: none; }
+  .venue-photo-break { height: clamp(200px, 64.65vw, 452px); }
+  .venue-photo-break img { object-position: center; }
 }
 
 @media (max-width: 420px) {
