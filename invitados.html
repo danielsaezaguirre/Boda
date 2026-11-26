@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f4eb">
+    <meta name="description" content="Lista local de invitados de la boda.">
+    <title>Lista de invitados · Vivi &amp; Angel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f7f4eb;
+        --paper-dark: #eeebdf;
+        --ink: #20352b;
+        --muted: #6c746b;
+        --olive: #647348;
+        --gold: #ad9259;
+        --line: #d9d4c4;
+        --serif: "Cormorant Garamond", Georgia, serif;
+        --sans: "DM Sans", Arial, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+      body { min-width: 320px; margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 var(--sans); }
+      button, input, select, textarea { font: inherit; }
+      button { cursor: pointer; }
+      button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, a:focus-visible { outline: 3px solid #ad925980; outline-offset: 3px; }
+      .site-header { padding: 18px max(5%, calc((100% - 1120px)/2)); background: var(--ink); color: var(--paper); }
+      .site-header a { color: inherit; text-decoration: none; }
+      .wordmark { font: 500 21px/1.2 var(--serif); }
+      .wordmark span { display: block; color: #d4d6cc; font: 500 10px/1.8 var(--sans); letter-spacing: .14em; }
+      main { width: min(1120px, 90%); margin: 0 auto; padding: 48px 0 72px; }
+      .intro { margin-bottom: 30px; }
+      .eyebrow { margin: 0 0 5px; color: var(--olive); font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+      h1, h2 { font-family: var(--serif); font-weight: 500; }
+      h1 { margin: 0; font-size: clamp(42px, 7vw, 64px); line-height: 1.05; }
+      .intro-copy { max-width: 660px; margin: 12px 0 0; color: var(--muted); }
+      .notice { margin: 22px 0 0; border-left: 3px solid var(--gold); padding: 12px 16px; background: #eeebdf; color: #424a40; font-size: 13px; }
+      .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0; }
+      .stat { border: 1px solid var(--line); padding: 14px 18px; background: #fffdf8; }
+      .stat strong { display: block; color: var(--olive); font: 500 30px/1.1 var(--serif); }
+      .stat span { color: var(--muted); font-size: 12px; }
+      .panel { margin-top: 20px; border: 1px solid var(--line); background: #fffdf8; }
+      .panel-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; padding: 20px 22px 0; }
+      h2 { margin: 0; font-size: 29px; line-height: 1.2; }
+      .panel-heading p { margin: 0; color: var(--muted); font-size: 12px; }
+      form { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 15px; padding: 18px 22px 22px; }
+      .field { display: grid; gap: 6px; }
+      .field-wide { grid-column: 1 / -1; }
+      label { color: var(--ink); font-size: 12px; font-weight: 600; }
+      input, select, textarea { width: 100%; min-height: 44px; border: 1px solid var(--line); border-radius: 0; padding: 9px 11px; background: var(--paper); color: var(--ink); }
+      textarea { min-height: 75px; resize: vertical; }
+      .form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; grid-column: 1 / -1; }
+      .button { min-height: 43px; border: 1px solid var(--ink); padding: 9px 16px; background: var(--ink); color: white; font-size: 12px; font-weight: 600; }
+      .button:hover { background: var(--olive); }
+      .button-secondary { border-color: var(--olive); background: transparent; color: var(--ink); }
+      .button-secondary:hover { color: white; }
+      .button-small { min-height: 34px; padding: 5px 9px; font-size: 11px; }
+      .message { min-height: 1.5em; margin: 0 22px 16px; color: #a34339; font-size: 13px; }
+      .message.success { color: var(--olive); }
+      .toolbar { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; padding: 18px 22px; }
+      .toolbar .field { width: min(100%, 300px); }
+      .table-wrap { overflow-x: auto; border-top: 1px solid var(--line); }
+      table { width: 100%; border-collapse: collapse; text-align: left; }
+      th, td { padding: 13px 15px; border-bottom: 1px solid var(--line); vertical-align: top; }
+      th { background: var(--paper-dark); color: #454d43; font-size: 11px; font-weight: 700; letter-spacing: .04em; white-space: nowrap; }
+      td { font-size: 13px; }
+      tbody tr:last-child td { border-bottom: 0; }
+      .actions { display: flex; flex-wrap: wrap; gap: 7px; }
+      .empty { padding: 28px 16px; color: var(--muted); text-align: center; }
+      footer { padding-top: 18px; color: var(--muted); font-size: 11px; text-align: center; }
+
+      @media (max-width: 680px) {
+        main { padding-top: 34px; }
+        .stats { gap: 8px; }
+        .stat { padding: 12px 10px; }
+        .stat strong { font-size: 26px; }
+        .stat span { font-size: 10px; }
+        form { grid-template-columns: 1fr 1fr; padding: 16px; }
+        .panel-heading, .toolbar { padding-right: 16px; padding-left: 16px; }
+        .message { margin-right: 16px; margin-left: 16px; }
+        th, td { padding: 11px 12px; }
+      }
+      @media (max-width: 430px) {
+        form { grid-template-columns: 1fr; }
+        .field-wide, .form-actions { grid-column: auto; }
+        .stats { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="index.html">Vivi &amp; Angel<span>LISTA DE INVITADOS</span></a>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">Organización de la boda</p>
+        <h1 id="page-title">Lista de invitados</h1>
+        <p class="intro-copy">Anota aquí las respuestas que recibas y consulta de un vistazo quién asistirá y quién necesita autobús.</p>
+        <p class="notice"><strong>Almacenamiento local:</strong> los datos se guardan en este navegador y dispositivo. No se envían a GitHub ni se sincronizan con WhatsApp u otros dispositivos. Descarga una copia CSV para conservarlos.</p>
+      </section>
+
+      <section class="stats" aria-label="Resumen de invitados">
+        <div class="stat"><strong id="total-count">0</strong><span>invitados anotados</span></div>
+        <div class="stat"><strong id="attending-count">0</strong><span>asistirán</span></div>
+        <div class="stat"><strong id="bus-count">0</strong><span>necesitan autobús</span></div>
+      </section>
+
+      <section class="panel" aria-labelledby="form-title">
+        <div class="panel-heading">
+          <h2 id="form-title">Añadir invitado</h2>
+          <p>Registra manualmente la información que te hayan confirmado.</p>
+        </div>
+        <form id="guest-form">
+          <div class="field field-wide">
+            <label for="guest-name">Nombre</label>
+            <input id="guest-name" name="name" type="text" maxlength="120" autocomplete="off" required>
+          </div>
+          <div class="field">
+            <label for="guest-attendance">¿Asistirá?</label>
+            <select id="guest-attendance" name="attendance" required>
+              <option value="">Selecciona una opción</option>
+              <option value="yes">Sí, allí estará</option>
+              <option value="no">No podrá asistir</option>
+              <option value="pending">Pendiente de respuesta</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="guest-bus">¿Necesita autobús?</label>
+            <select id="guest-bus" name="bus" required>
+              <option value="">Selecciona una opción</option>
+              <option value="yes">Sí</option>
+              <option value="no">No</option>
+              <option value="pending">Pendiente de confirmar</option>
+            </select>
+          </div>
+          <div class="field field-wide">
+            <label for="guest-notes">Observaciones <span>(opcional)</span></label>
+            <textarea id="guest-notes" name="notes" maxlength="500" rows="2"></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="button" id="save-button" type="submit">Guardar invitado</button>
+            <button class="button button-secondary" id="cancel-edit" type="button" hidden>Cancelar edición</button>
+          </div>
+        </form>
+        <p class="message" id="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel" aria-labelledby="list-title">
+        <div class="panel-heading">
+          <h2 id="list-title">Invitados registrados</h2>
+          <p id="result-count">0 resultados</p>
+        </div>
+        <div class="toolbar">
+          <div class="field">
+            <label for="search">Buscar por nombre</label>
+            <input id="search" type="search" autocomplete="off" placeholder="Escribe un nombre">
+          </div>
+          <button class="button button-secondary" id="export-button" type="button">Descargar CSV</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Asistencia</th>
+                <th scope="col">Autobús</th>
+                <th scope="col">Observaciones</th>
+                <th scope="col"><span class="visually-hidden">Acciones</span></th>
+              </tr>
+            </thead>
+            <tbody id="guest-list"></tbody>
+          </table>
+        </div>
+      </section>
+      <footer>La invitación pública no envía datos a esta lista. Añade aquí manualmente las confirmaciones que recibas.</footer>
+    </main>
+
+    <script>
+      (function () {
+        "use strict";
+
+        var storageKey = "vivi-angel-lista-invitados-v1";
+        var form = document.getElementById("guest-form");
+        var nameInput = document.getElementById("guest-name");
+        var attendanceInput = document.getElementById("guest-attendance");
+        var busInput = document.getElementById("guest-bus");
+        var notesInput = document.getElementById("guest-notes");
+        var saveButton = document.getElementById("save-button");
+        var cancelButton = document.getElementById("cancel-edit");
+        var message = document.getElementById("message");
+        var list = document.getElementById("guest-list");
+        var search = document.getElementById("search");
+        var exportButton = document.getElementById("export-button");
+        var editingId = null;
+        var guests = readGuests();
+
+        function setMessage(text, isSuccess) {
+          message.textContent = text;
+          message.className = isSuccess ? "message success" : "message";
+        }
+
+        function readGuests() {
+          try {
+            var stored = window.localStorage.getItem(storageKey);
+            if (stored === null) return [];
+            var parsed = JSON.parse(stored);
+            var valid = Array.isArray(parsed) && parsed.every(function (guest) {
+              return guest && typeof guest.id === "string" &&
+                typeof guest.name === "string" &&
+                ["yes", "no", "pending"].indexOf(guest.attendance) !== -1 &&
+                ["yes", "no", "pending"].indexOf(guest.bus) !== -1 &&
+                typeof guest.notes === "string";
+            });
+            if (!valid) throw new Error("El formato guardado no es válido.");
+            return parsed;
+          } catch (error) {
+            setMessage("No se pudieron leer los datos guardados. No se modificará la lista. " + error.message, false);
+            form.querySelectorAll("input, select, textarea, button").forEach(function (control) {
+              control.disabled = true;
+            });
+            exportButton.disabled = true;
+            return [];
+          }
+        }
+
+        function persist(nextGuests) {
+          try {
+            window.localStorage.setItem(storageKey, JSON.stringify(nextGuests));
+            guests = nextGuests;
+            return true;
+          } catch (error) {
+            setMessage("No se pudieron guardar los cambios en este navegador: " + error.message, false);
+            return false;
+          }
+        }
+
+        function labelAttendance(value) {
+          return value === "yes" ? "Sí, asistirá" : value === "no" ? "No asistirá" : "Pendiente";
+        }
+
+        function labelBus(value) {
+          return value === "yes" ? "Sí" : value === "no" ? "No" : "Pendiente";
+        }
+
+        function makeCell(text) {
+          var cell = document.createElement("td");
+          cell.textContent = text || "—";
+          return cell;
+        }
+
+        function render() {
+          document.getElementById("total-count").textContent = String(guests.length);
+          document.getElementById("attending-count").textContent = String(guests.filter(function (guest) {
+            return guest.attendance === "yes";
+          }).length);
+          document.getElementById("bus-count").textContent = String(guests.filter(function (guest) {
+            return guest.bus === "yes";
+          }).length);
+
+          var query = search.value.trim().toLocaleLowerCase("es");
+          var visibleGuests = guests.filter(function (guest) {
+            return guest.name.toLocaleLowerCase("es").indexOf(query) !== -1;
+          }).slice().reverse();
+          list.replaceChildren();
+          document.getElementById("result-count").textContent = visibleGuests.length + (visibleGuests.length === 1 ? " resultado" : " resultados");
+
+          if (visibleGuests.length === 0) {
+            var row = document.createElement("tr");
+            var emptyCell = document.createElement("td");
+            emptyCell.colSpan = 5;
+            emptyCell.className = "empty";
+            emptyCell.textContent = guests.length ? "No se encontraron invitados con ese nombre." : "Todavía no hay invitados. Añade el primero en el formulario.";
+            row.appendChild(emptyCell);
+            list.appendChild(row);
+            return;
+          }
+
+          visibleGuests.forEach(function (guest) {
+            var row = document.createElement("tr");
+            row.appendChild(makeCell(guest.name));
+            row.appendChild(makeCell(labelAttendance(guest.attendance)));
+            row.appendChild(makeCell(labelBus(guest.bus)));
+            row.appendChild(makeCell(guest.notes));
+
+            var actionsCell = document.createElement("td");
+            var actions = document.createElement("div");
+            actions.className = "actions";
+            var editButton = document.createElement("button");
+            editButton.type = "button";
+            editButton.className = "button button-secondary button-small";
+            editButton.textContent = "Editar";
+            editButton.setAttribute("aria-label", "Editar a " + guest.name);
+            editButton.addEventListener("click", function () {
+              editingId = guest.id;
+              nameInput.value = guest.name;
+              attendanceInput.value = guest.attendance;
+              busInput.value = guest.bus;
+              notesInput.value = guest.notes;
+              document.getElementById("form-title").textContent = "Editar invitado";
+              saveButton.textContent = "Guardar cambios";
+              cancelButton.hidden = false;
+              setMessage("", true);
+              nameInput.focus();
+            });
+
+            var deleteButton = document.createElement("button");
+            deleteButton.type = "button";
+            deleteButton.className = "button button-secondary button-small";
+            deleteButton.textContent = "Eliminar";
+            deleteButton.setAttribute("aria-label", "Eliminar a " + guest.name);
+            deleteButton.addEventListener("click", function () {
+              if (!window.confirm("¿Quieres eliminar a " + guest.name + " de la lista?")) return;
+              if (persist(guests.filter(function (item) { return item.id !== guest.id; }))) {
+                if (editingId === guest.id) resetForm();
+                setMessage("Invitado eliminado.", true);
+                render();
+              }
+            });
+
+            actions.appendChild(editButton);
+            actions.appendChild(deleteButton);
+            actionsCell.appendChild(actions);
+            row.appendChild(actionsCell);
+            list.appendChild(row);
+          });
+        }
+
+        function resetForm() {
+          form.reset();
+          editingId = null;
+          document.getElementById("form-title").textContent = "Añadir invitado";
+          saveButton.textContent = "Guardar invitado";
+          cancelButton.hidden = true;
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var name = nameInput.value.trim();
+          var wasEditing = Boolean(editingId);
+          if (!name) {
+            setMessage("Escribe el nombre del invitado.", false);
+            nameInput.focus();
+            return;
+          }
+
+          var guest = {
+            id: editingId || "guest-" + Date.now() + "-" + Math.random().toString(36).slice(2),
+            name: name,
+            attendance: attendanceInput.value,
+            bus: busInput.value,
+            notes: notesInput.value.trim()
+          };
+          var nextGuests = editingId
+            ? guests.map(function (item) { return item.id === editingId ? guest : item; })
+            : guests.concat(guest);
+
+          if (persist(nextGuests)) {
+            resetForm();
+            setMessage(wasEditing ? "Cambios guardados." : "Invitado añadido.", true);
+            render();
+          }
+        });
+
+        cancelButton.addEventListener("click", function () {
+          resetForm();
+          setMessage("", true);
+        });
+
+        search.addEventListener("input", render);
+
+        exportButton.addEventListener("click", function () {
+          var rows = [["Nombre", "Asistencia", "Autobús", "Observaciones"]].concat(guests.map(function (guest) {
+            return [guest.name, labelAttendance(guest.attendance), labelBus(guest.bus), guest.notes];
+          }));
+          var csv = "\uFEFF" + rows.map(function (row) {
+            return row.map(function (value) {
+              return '"' + String(value).replace(/"/g, '""') + '"';
+            }).join(",");
+          }).join("\r\n");
+          var url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+          var link = document.createElement("a");
+          link.href = url;
+          link.download = "invitados-boda.csv";
+          link.click();
+          window.setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+        });
+
+        render();
+      }());
+    </script>
+  </body>
+</html>

@@ -21,4 +21,8 @@ El formulario abre WhatsApp con un mensaje preparado con el nombre, la asistenci
 
 El número de destino de `whatsappNumber` queda visible en el código público de la web; configura uno destinado a recibir estas confirmaciones.
 
+## Lista local de invitados
+
+Abre `invitados.html` para anotar manualmente las respuestas recibidas por WhatsApp. La lista se guarda en el almacenamiento local del navegador: no se comparte entre dispositivos, no se sincroniza con las respuestas de la invitación y no se suben los registros a GitHub. Usa «Descargar CSV» para guardar una copia de seguridad.
+
 Abre `index.html` en un navegador para previsualizar la invitación. Las fuentes tipográficas y el código QR requieren conexión a internet.
