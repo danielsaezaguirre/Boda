@@ -240,6 +240,7 @@ a { color: inherit; }
   .hero-content h1 i { line-height: 1; }
   .hero-side-note { right: 15px; bottom: 23px; }
   .section-pad { padding: 72px 7%; }
+  .celebration, .story-section, .dress-code-section, .rsvp-section { background-attachment: scroll; }
   .countdown-section { padding-top: 12px; padding-bottom: 58px; }
   .countdown-medallion { width: min(100%, 370px); margin-top: -42px; }
   .countdown-circle { width: 78%; }
