@@ -377,108 +377,32 @@
     byId("gallery-status").textContent = "Escanea el código para abrir la carpeta de fotos";
   }
 
-  const supabaseConfigured = Boolean(config.supabaseUrl && config.supabaseAnonKey);
-  const supabaseUrl = config.supabaseUrl.replace(/\/+$/, "");
-
-  const companionSelect = byId("companion-select");
-  const companionTrigger = byId("companion-trigger");
-  const companionOptions = byId("companion-options");
-  const closeCompanionOptions = () => {
-    companionTrigger.setAttribute("aria-expanded", "false");
-    companionOptions.classList.remove("is-open");
-    window.setTimeout(() => {
-      if (companionTrigger.getAttribute("aria-expanded") === "false") companionOptions.hidden = true;
-    }, 180);
-  };
-  companionTrigger.addEventListener("click", () => {
-    const isOpen = companionTrigger.getAttribute("aria-expanded") === "true";
-    if (isOpen) {
-      closeCompanionOptions();
-      return;
-    }
-    companionOptions.hidden = false;
-    requestAnimationFrame(() => companionOptions.classList.add("is-open"));
-    companionTrigger.setAttribute("aria-expanded", "true");
-  });
-  companionOptions.querySelectorAll("[data-value]").forEach((option) => {
-    option.addEventListener("click", () => {
-      byId("guest-companions").value = option.dataset.value;
-      byId("companion-value").textContent = option.textContent;
-      companionOptions.querySelectorAll("[role='option']").forEach((item) => {
-        item.setAttribute("aria-selected", String(item === option));
-      });
-      closeCompanionOptions();
-      companionTrigger.focus();
-    });
-  });
-  document.addEventListener("click", (event) => {
-    if (!companionSelect.contains(event.target)) closeCompanionOptions();
-  });
-  companionTrigger.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeCompanionOptions();
-  });
-  byId("rsvp-form").addEventListener("reset", () => {
-    byId("guest-companions").value = "1";
-    byId("companion-value").textContent = "1 persona";
-    companionOptions.querySelectorAll("[role='option']").forEach((option, index) => {
-      option.setAttribute("aria-selected", String(index === 0));
-    });
-    closeCompanionOptions();
-  });
-
-  const supabaseRequest = async (path, { method = "GET", body, prefer } = {}) => {
-    const headers = {
-      apikey: config.supabaseAnonKey,
-      Authorization: `Bearer ${config.supabaseAnonKey}`
-    };
-    if (body !== undefined) headers["Content-Type"] = "application/json";
-    if (prefer) headers.Prefer = prefer;
-
-    const response = await fetch(`${supabaseUrl}${path}`, {
-      method,
-      headers,
-      body: body === undefined ? undefined : JSON.stringify(body)
-    });
-    if (!response.ok) {
-      const errorBody = await response.json().catch(() => ({}));
-      throw new Error(errorBody.message || errorBody.msg || `HTTP ${response.status}`);
-    }
-    if (response.status === 204) return null;
-    return response.json();
-  };
-
-  byId("rsvp-form").addEventListener("submit", async (event) => {
+  byId("rsvp-form").addEventListener("submit", (event) => {
     event.preventDefault();
-    if (!supabaseConfigured) {
-      byId("rsvp-message").textContent = "La pareja todavía tiene que configurar la lista privada de confirmaciones.";
+    const form = new FormData(event.currentTarget);
+    const whatsappNumber = String(config.whatsappNumber || "").replace(/\D/g, "");
+    if (!/^\d{8,15}$/.test(whatsappNumber)) {
+      byId("rsvp-message").textContent = "El número de WhatsApp no está configurado correctamente. Contacta con la pareja.";
       return;
     }
-    const form = new FormData(event.currentTarget);
-    const submitButton = event.currentTarget.querySelector("button[type='submit']");
-    submitButton.disabled = true;
-    byId("rsvp-message").textContent = "Enviando tu confirmación…";
-    try {
-      await supabaseRequest("/rest/v1/wedding_rsvps", {
-        method: "POST",
-        body: {
-          guest_name: form.get("guestName"),
-          guest_email: form.get("guestEmail"),
-          attending: form.get("attendance") === "Sí, allí estaré",
-          companions: Number(form.get("companions")),
-          notes: form.get("notes") || ""
-        },
-        prefer: "return=minimal"
-      });
-      event.currentTarget.reset();
-      byId("rsvp-message").textContent = "¡Gracias! Hemos recibido tu confirmación.";
-    } catch (error) {
-      const status = error.message.match(/^HTTP \d+/);
-      byId("rsvp-message").textContent = status
-        ? `No se pudo guardar la confirmación (${status[0]}). Comprueba la configuración e inténtalo de nuevo.`
-        : "No se pudo guardar la confirmación. Comprueba tu conexión e inténtalo de nuevo.";
-    } finally {
-      submitButton.disabled = false;
-    }
+    const guestName = String(form.get("guestName") || "").trim();
+    const guestEmail = String(form.get("guestEmail") || "").trim();
+    const attendance = String(form.get("attendance") || "");
+    const bus = String(form.get("bus") || "");
+    const notes = String(form.get("notes") || "").trim() || "Sin comentarios";
+    const message = [
+      `Confirmación para la boda de ${config.couple.first} y ${config.couple.second}`,
+      `Nombre: ${guestName}`,
+      `Correo electrónico: ${guestEmail}`,
+      `Asistencia: ${attendance}`,
+      `Autobús: ${bus}`,
+      `Mensaje: ${notes}`
+    ].join("\n");
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    byId("rsvp-message").textContent = "Revisa el mensaje en WhatsApp y pulsa «Enviar» para confirmar.";
+    const whatsappWindow = window.open(whatsappUrl, "_blank");
+    if (whatsappWindow) whatsappWindow.opener = null;
+    else window.location.href = whatsappUrl;
   });
 
 })();
