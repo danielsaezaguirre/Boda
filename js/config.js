@@ -4,7 +4,7 @@ window.WEDDING_CONFIG = {
     first: "Vivi",
     second: "Angel"
   },
-  date: "2027-06-19T17:00:00",
+  date: "2027-09-18T19:00:00",
   venue: "Carrer de la Serra Martés, 32, bajo izquierdo",
   address: "Benicalap, 46015 València, Valencia",
   rsvpDeadline: "2027-05-19",
@@ -23,3 +23,5 @@ window.WEDDING_CONFIG = {
     { time: "04:30", title: "Fin", description: "Cada mochuelo a su olivo" }
   ]
 };
+
+

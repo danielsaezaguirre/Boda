@@ -107,40 +107,29 @@
     renderStoryAlbum();
   }
 
-  const rosemaryLayer = byId("rosemary-layer");
-  if (rosemaryLayer && !reduceMotion) {
-    const cornerPairs = [
-      ["corner-top-left", "corner-bottom-right"],
-      ["corner-top-right", "corner-bottom-left"]
-    ];
-    let cornerPairIndex = 0;
-    const showRosemaryCorners = () => {
-      rosemaryLayer.querySelectorAll(".rosemary-scroll-sprig").forEach((sprig) => sprig.remove());
-      cornerPairs[cornerPairIndex++ % cornerPairs.length].forEach((corner) => {
-        const sprig = document.createElement("img");
-        sprig.className = `rosemary-scroll-sprig ${corner}`;
-        sprig.src = "assets/rosemary-line.svg";
-        sprig.alt = "";
-        sprig.draggable = false;
-        sprig.addEventListener("animationend", () => sprig.remove(), { once: true });
-        rosemaryLayer.append(sprig);
-      });
-    };
-    let lastRosemaryScroll = window.scrollY;
-    let rosemaryScrollQueued = false;
-    window.addEventListener("scroll", () => {
-      if (rosemaryScrollQueued) return;
-      rosemaryScrollQueued = true;
-      window.requestAnimationFrame(() => {
-        const currentScroll = window.scrollY;
-        const distance = currentScroll - lastRosemaryScroll;
-        if (Math.abs(distance) >= 320) {
-          showRosemaryCorners();
-          lastRosemaryScroll = currentScroll;
-        }
-        rosemaryScrollQueued = false;
-      });
-    }, { passive: true });
+  const botanicalSections = [...document.querySelectorAll(".countdown-section, .quote-section, .menu-section")];
+  botanicalSections.forEach((section, index) => {
+    section.classList.add("botanical-section");
+    const corners = index % 2
+      ? [["sprig-bottom-right", "sprig-primary"]]
+      : [["sprig-top-left", "sprig-primary"], ["sprig-bottom-right", "sprig-opposite"]];
+    corners.forEach(([corner, role]) => {
+      const sprig = document.createElement("img");
+      sprig.className = `section-sprig ${corner} ${role}`;
+      sprig.src = "assets/golden-leaf-sprig.svg";
+      sprig.alt = "";
+      sprig.setAttribute("aria-hidden", "true");
+      sprig.draggable = false;
+      section.prepend(sprig);
+    });
+  });
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    botanicalSections.forEach((section) => section.classList.add("is-flowering"));
+  } else {
+    const botanicalObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.target.classList.toggle("is-flowering", entry.isIntersecting));
+    }, { threshold: 0.01, rootMargin: "-12% 0px -12% 0px" });
+    botanicalSections.forEach((section) => botanicalObserver.observe(section));
   }
 
   const quote = document.querySelector(".quote-card blockquote");
@@ -165,11 +154,9 @@
   });
   const revealItems = document.querySelectorAll(".reveal");
   const celebrationSection = byId("celebracion");
-  const storySection = document.querySelector(".story-section");
   if (reduceMotion || !("IntersectionObserver" in window)) {
     revealItems.forEach((item) => item.classList.add("is-visible"));
     celebrationSection?.classList.add("is-visible");
-    storySection?.classList.add("is-bloomed");
   } else {
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
@@ -190,17 +177,6 @@
         });
       }, { threshold: 0.16 });
       celebrationObserver.observe(celebrationSection);
-    }
-    if (storySection) {
-      const flowerObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-bloomed");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12 });
-      flowerObserver.observe(storySection);
     }
 
     const parallaxItems = [...document.querySelectorAll("[data-parallax]")];
