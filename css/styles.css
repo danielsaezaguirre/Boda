@@ -303,7 +303,7 @@ a { color: inherit; }
   .countdown strong { font-size: clamp(26px, 8vw, 35px); }
   .countdown > div span { font-size: 9.6px; letter-spacing: 0; }
   .countdown-flourish { margin-top: 12px; font-size: 30px; }
-  .countdown-caption { max-width: 220px; margin-top: 18px; font-size: 16.8px; }
+  .countdown-caption { max-width: 220px; margin: 18px auto 0; font-size: 16.8px; }
   .quote-section { padding-top: 64px; padding-bottom: 64px; }
   .celebration, .rsvp-section { grid-template-columns: 1fr; gap: 39px; }
   .section-sprig { width: clamp(155px, 42vw, 210px); top: -35px; left: -46px; }
