@@ -17,7 +17,7 @@ El código QR de `image/fotos-qr.png` abre la dirección configurada en `gallery
 
 ## Confirmaciones por WhatsApp
 
-El formulario abre WhatsApp con un mensaje preparado con el nombre, el correo, la asistencia, la necesidad de autobús y las notas del invitado. La persona debe revisar el mensaje y pulsar «Enviar» en WhatsApp para completar la confirmación. La página no almacena esos datos ni usa un panel de administración.
+El formulario abre WhatsApp con un mensaje preparado con el nombre, la asistencia, la necesidad de autobús y las notas del invitado. La persona debe revisar el mensaje y pulsar «Enviar» en WhatsApp para completar la confirmación. La página no almacena esos datos ni usa un panel de administración.
 
 El número de destino de `whatsappNumber` queda visible en el código público de la web; configura uno destinado a recibir estas confirmaciones.
 

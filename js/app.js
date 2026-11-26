@@ -386,14 +386,12 @@
       return;
     }
     const guestName = String(form.get("guestName") || "").trim();
-    const guestEmail = String(form.get("guestEmail") || "").trim();
     const attendance = String(form.get("attendance") || "");
     const bus = String(form.get("bus") || "");
     const notes = String(form.get("notes") || "").trim() || "Sin comentarios";
     const message = [
       `Confirmación para la boda de ${config.couple.first} y ${config.couple.second}`,
       `Nombre: ${guestName}`,
-      `Correo electrónico: ${guestEmail}`,
       `Asistencia: ${attendance}`,
       `Autobús: ${bus}`,
       `Mensaje: ${notes}`
