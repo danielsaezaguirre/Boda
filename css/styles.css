@@ -28,8 +28,9 @@ a { color: inherit; }
 .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 18px; border: 1px solid transparent; padding: 12px 20px; text-decoration: none; cursor: pointer; font-size: 13.2px; font-weight: 600; letter-spacing: .04em; transition: background .2s, color .2s, border-color .2s; }
 .button-dark { background: var(--ink); color: #fff; }
 .button-dark:hover { background: var(--olive); }
-.button-outline { border-color: var(--olive); color: var(--ink); }
-.button-outline:hover { background: var(--olive); color: #fff; }
+.button-outline { border-color: var(--gold); background: var(--olive); color: var(--paper); box-shadow: inset 0 0 0 1px #ffffff70; }
+.button-outline:hover { background: var(--ink); color: #fff; }
+.button-outline:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
 .site-header { position: relative; z-index: 5; height: 77px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 7.2%; border-bottom: 1px solid #ad92592e; background: radial-gradient(ellipse at 50% 0%, #3b4b3a, var(--ink) 68%); color: var(--paper); }
 .wordmark { display: grid; gap: 0; text-decoration: none; font: 500 19px/1.25 var(--serif); }
