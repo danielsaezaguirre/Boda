@@ -91,7 +91,7 @@ a { color: inherit; }
 .quote-card::after { bottom: 0; }
 .quote-ornament { display: inline-block; margin-bottom: 20px; color: var(--gold); font-size: 18px; filter: drop-shadow(0 0 9px #d3c49a70); animation: quote-turn 18s linear infinite; }
 .quote-card .eyebrow { margin: 0 0 18px; color: #c2c8a9; }
-.quote-card blockquote { margin: 0; color: var(--paper); font: 400 clamp(22px, 3vw, 34px)/1.55 var(--serif); text-wrap: pretty; text-shadow: 0 2px 18px #00000026; }
+.quote-card blockquote { margin: 0; color: var(--paper); font: 400 clamp(22px, 3vw, 34px)/1.55 var(--serif); text-align: center; text-wrap: pretty; text-shadow: 0 2px 18px #00000026; }
 .quote-word { display: inline-block; opacity: 0; filter: blur(9px); transform: translateY(8px); transition: opacity .85s ease, filter 1s ease, transform 1s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--word-index) * 42ms); }
 .quote-card.is-visible .quote-word { opacity: 1; filter: blur(0); transform: translateY(0); }
 .quote-rule { display: block; width: 42px; height: 1px; margin: 26px auto 0; background: var(--gold); }
@@ -103,7 +103,7 @@ a { color: inherit; }
 .celebration-copy h2, .photos-copy h2 { margin: 11px 0 18px; font: 400 clamp(39px, 5vw, 59px)/1.17 var(--serif); letter-spacing: -.025em; }
 .celebration-copy h2 em, .photos-copy h2 em { color: var(--olive); font-weight: 400; }
 .celebration-copy > p:not(.eyebrow), .photos-copy > p:not(.eyebrow) { max-width: 465px; color: var(--muted); font-size: 15.6px; }
-.quote-card blockquote, .celebration-copy > p:not(.eyebrow), .menu-item > p:last-child, .rsvp-intro > p:not(.eyebrow), .photos-copy > p:not(.eyebrow) { text-align: justify; }
+.celebration-copy > p:not(.eyebrow), .menu-item > p:last-child, .rsvp-intro > p:not(.eyebrow), .photos-copy > p:not(.eyebrow) { text-align: justify; }
 .detail-list { display: grid; gap: 17px; margin: 28px 0; }
 .detail-list > div { display: flex; gap: 14px; align-items: flex-start; }
 .detail-icon { color: var(--olive); font-size: 20px; line-height: 1.2; }
