@@ -107,7 +107,7 @@
     renderStoryAlbum();
   }
 
-  const botanicalSections = [...document.querySelectorAll(".countdown-section, .quote-section, .menu-section")];
+  const botanicalSections = [...document.querySelectorAll(".countdown-section, .quote-section")];
   botanicalSections.forEach((section, index) => {
     section.classList.add("botanical-section");
     const corners = index % 2
@@ -148,7 +148,7 @@
     });
   }
 
-  document.querySelectorAll(".section-heading, .celebration-copy, .celebration-map, .timeline, .menu-item, .rsvp-intro, .rsvp-form, .photos-copy, .qr-card, .quote-card").forEach((item, index) => {
+  document.querySelectorAll(".section-heading, .celebration-copy, .celebration-map, .timeline, .rsvp-intro, .rsvp-form, .photos-copy, .qr-card, .quote-card").forEach((item, index) => {
     item.classList.add("reveal");
     item.style.setProperty("--reveal-delay", `${(index % 4) * 75}ms`);
   });
