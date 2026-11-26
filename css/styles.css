@@ -223,6 +223,10 @@ a { color: inherit; }
 .whatsapp-note { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
 .rsvp-form .button { justify-self: start; margin-top: 5px; }
 
+.venue-photo-break { position: relative; isolation: isolate; height: clamp(320px, 42vw, 540px); margin: 0; overflow: hidden; background: var(--ink); }
+.venue-photo-break::after { position: absolute; inset: 0; background: linear-gradient(110deg, #6473484d, #20352b55); content: ""; pointer-events: none; }
+.venue-photo-break img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 52%; opacity: .88; filter: saturate(.9); }
+
 .site-footer { display: grid; justify-items: center; padding: 48px 20px 42px; background: var(--ink); color: var(--paper); text-align: center; }
 .footer-flower { color: #bdc29f; font-size: 22px; }
 .site-footer p { margin: 7px 0; color: #d2d4c9; font: italic 18px var(--serif); }
