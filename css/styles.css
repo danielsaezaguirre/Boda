@@ -103,6 +103,7 @@ a { color: inherit; }
 .celebration-copy h2, .photos-copy h2 { margin: 11px 0 18px; font: 400 clamp(39px, 5vw, 59px)/1.17 var(--serif); letter-spacing: -.025em; }
 .celebration-copy h2 em, .photos-copy h2 em { color: var(--olive); font-weight: 400; }
 .celebration-copy > p:not(.eyebrow), .photos-copy > p:not(.eyebrow) { max-width: 465px; color: var(--muted); font-size: 15.6px; }
+.quote-card blockquote, .celebration-copy > p:not(.eyebrow), .menu-item > p:last-child, .rsvp-intro > p:not(.eyebrow), .photos-copy > p:not(.eyebrow) { text-align: justify; }
 .detail-list { display: grid; gap: 17px; margin: 28px 0; }
 .detail-list > div { display: flex; gap: 14px; align-items: flex-start; }
 .detail-icon { color: var(--olive); font-size: 20px; line-height: 1.2; }
