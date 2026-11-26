@@ -12,8 +12,8 @@
 }
 
 * { box-sizing: border-box; }
-html { width: 100%; min-width: 320px; overflow-x: hidden; scroll-behavior: smooth; }
-body { width: 100%; min-width: 320px; margin: 0; overflow-x: hidden; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 18px; line-height: 1.7; }
+html { width: 100%; min-width: 0; overflow-x: hidden; scroll-behavior: smooth; }
+body { width: 100%; min-width: 0; margin: 0; overflow-x: hidden; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 18px; line-height: 1.7; }
 #invitation { width: 100%; min-width: 0; max-width: 100%; margin: 0; }
 button, input, textarea { font: inherit; }
 a { color: inherit; }
@@ -241,6 +241,7 @@ a { color: inherit; }
   .hero-content h1 i { line-height: 1; }
   .hero-side-note { right: 15px; bottom: 23px; }
   .section-pad { padding: 72px 7%; }
+  .countdown-section { overflow-x: clip; }
   .countdown-section { padding-top: 12px; padding-bottom: 58px; }
   .countdown-medallion { width: min(100%, 370px); margin-top: -42px; }
   .countdown-circle { width: 78%; }
