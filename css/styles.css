@@ -99,7 +99,6 @@ a { color: inherit; }
 @keyframes quote-turn { to { transform: rotate(360deg); } }
 
 .celebration { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: 1fr .88fr; align-items: center; gap: 9%; background: url("../assets/fondo.png") center calc(50% + var(--fondo-scroll-offset, 0px)) / cover no-repeat fixed; }
-.celebration::before { position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse at 18% 16%, #fff8dfb5, transparent 52%), linear-gradient(110deg, #f3e4b8aa, transparent 55%); content: ""; opacity: .35; pointer-events: none; }
 .celebration-copy, .celebration-map { position: relative; z-index: 1; }
 .celebration-copy h2 { margin: 11px 0 18px; font: 400 clamp(39px, 5vw, 59px)/1.17 var(--serif); letter-spacing: -.025em; }
 .celebration-copy h2 em { color: var(--olive); font-weight: 400; }
