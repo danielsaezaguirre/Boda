@@ -27,6 +27,21 @@
   document.title = `${config.couple.first} & ${config.couple.second} · Nos casamos`;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fondoSections = document.querySelectorAll(".celebration, .story-section, .dress-code-section, .rsvp-section");
+  if (fondoSections.length && !reduceMotion) {
+    let fondoScrollPending = false;
+    const updateFondoParallax = () => {
+      const offset = Math.sin(window.scrollY / 1400) * 24;
+      document.documentElement.style.setProperty("--fondo-scroll-offset", `${offset.toFixed(2)}px`);
+      fondoScrollPending = false;
+    };
+    window.addEventListener("scroll", () => {
+      if (fondoScrollPending) return;
+      fondoScrollPending = true;
+      window.requestAnimationFrame(updateFondoParallax);
+    }, { passive: true });
+    updateFondoParallax();
+  }
   const countdownVideo = byId("countdown-video");
   if (countdownVideo && reduceMotion) {
     countdownVideo.removeAttribute("autoplay");
