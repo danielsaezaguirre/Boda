@@ -148,7 +148,7 @@
     });
   }
 
-  document.querySelectorAll(".section-heading, .celebration-copy, .celebration-map, .timeline, .rsvp-intro, .rsvp-form, .photos-copy, .qr-card, .quote-card").forEach((item, index) => {
+  document.querySelectorAll(".section-heading, .celebration-copy, .celebration-map, .timeline, .rsvp-intro, .rsvp-form, .dress-code-card, .quote-card").forEach((item, index) => {
     item.classList.add("reveal");
     item.style.setProperty("--reveal-delay", `${(index % 4) * 75}ms`);
   });
@@ -367,16 +367,6 @@
   });
   startMusic();
 
-  if (config.galleryUrl) {
-    const qr = byId("gallery-qr");
-    qr.src = config.galleryQrImage;
-    byId("gallery-link").href = config.galleryUrl;
-    byId("gallery-link").hidden = false;
-    qr.hidden = false;
-    byId("qr-placeholder").hidden = true;
-    byId("gallery-status").textContent = "Escanea el código para abrir la carpeta de fotos";
-  }
-
   byId("rsvp-form").addEventListener("submit", (event) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
@@ -394,7 +384,7 @@
       `Nombre: ${guestName}`,
       `Asistencia: ${attendance}`,
       `Autobús: ${bus}`,
-      `Mensaje: ${notes}`
+      `Alergias: ${notes}`
     ].join("\n");
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     byId("rsvp-message").textContent = "Revisa el mensaje en WhatsApp y pulsa «Enviar» para confirmar.";

@@ -11,8 +11,6 @@ window.WEDDING_CONFIG = {
   whatsappNumber: "34652014707",
   musicFile: "audio/cafe.mp3",
   coverImage: "assets/Inicio.jpeg",
-  galleryUrl: "https://drive.google.com/drive/folders/1sMQBdpnMEpTHDSpuNJCUjlZoJukL8y9n?usp=drive_link",
-  galleryQrImage: "image/fotos-qr.png",
   schedule: [
     { time: "19:00", title: "Llegada", description: "" },
     { time: "20:00", title: "Ceremonia", description: "" },

@@ -45,6 +45,7 @@
         <nav aria-label="Navegación principal">
           <a href="#celebracion">La celebración</a>
           <a href="#programa">Programa</a>
+          <a href="#dress-code">Dress code</a>
           <a href="#confirmacion">Confirmación</a>
         </nav>
         <button class="music-button" id="music-toggle" type="button" aria-pressed="false">
@@ -179,6 +180,16 @@
         <p class="timeline-note">Horarios aproximados. ¡Guarda energía para la fiesta!</p>
       </section>
 
+      <section class="dress-code-section section-pad" id="dress-code" aria-labelledby="dress-code-title">
+        <div class="dress-code-card">
+          <p class="eyebrow">Una ocasión especial</p>
+          <h2 id="dress-code-title">Dress code</h2>
+          <p class="dress-code-style">Formal</p>
+          <p class="dress-code-note">Os proponemos venir con vestimenta formal. No hay colores ni prendas específicas que debáis evitar.</p>
+          <span class="dress-code-ornament" aria-hidden="true">✳</span>
+        </div>
+      </section>
+
       <section class="rsvp-section section-pad" id="confirmacion">
         <div class="rsvp-intro">
           <p class="eyebrow">Tu presencia es nuestro mejor regalo</p>
@@ -205,26 +216,6 @@
           <button class="button button-dark" type="submit">Confirmar por WhatsApp <span aria-hidden="true">↗</span></button>
           <p class="form-message" id="rsvp-message" aria-live="polite"></p>
         </form>
-      </section>
-
-      <section class="photos-section section-pad" id="fotos">
-        <div class="photos-copy">
-          <p class="eyebrow">Los recuerdos los hacemos entre todos</p>
-          <h2>Comparte tus<br><em>fotografías</em></h2>
-          <p>Cuando llegue el gran día, escanea el código para ver y compartir las fotos de la celebración. ¡Queremos ver el día también a través de tus ojos!</p>
-          <span class="coming-soon" id="gallery-status">La galería estará disponible después de la boda</span>
-        </div>
-        <a class="qr-card" id="gallery-link" target="_blank" rel="noreferrer" aria-label="Abrir la carpeta de fotos de la boda">
-          <span class="qr-card-label">UNA CARPETA DE RECUERDOS</span>
-          <span class="qr-frame" id="qr-container">
-            <div class="qr-placeholder" id="qr-placeholder" aria-label="Código QR pendiente de configurar">
-              <span>✳</span><span>FOTOS</span><span>✳</span>
-            </div>
-            <img id="gallery-qr" alt="Código QR para abrir la carpeta de fotos de la boda" hidden>
-          </span>
-          <span class="qr-card-action">Pulsa aquí para abrir la galería <span aria-hidden="true">↗</span></span>
-          <span class="qr-card-hint">o escanea el código con tu cámara</span>
-        </a>
       </section>
 
       <footer class="site-footer">
